@@ -15,4 +15,6 @@ Script:
 - generates interactive line plot for individual progress data (plotly)
 - generates histograms for intercept and slope variables
 
+Output: .html file with script and plots
+
 Required libraries: ggplot2, plotly
