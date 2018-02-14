@@ -114,7 +114,7 @@ Maximum n-back level for all subjects:
 
 ```{r, warning = FALSE, message = FALSE}
 # Maximum n-back level for all subjects, all sessions
-lm(mean_level ~ session, data = training_progress)
+lm(max_level ~ session, data = training_progress)
 
 # Scatter plot
 g <- ggplot(training_progress,
@@ -169,4 +169,28 @@ hist(slope_max, xlab = "Slope")
 
 ```
 
+Global maximum n-back level for each individual:
+------------------------------------------------------
 
+```{r}
+
+max_lev <- c()
+
+for (i in subjects){
+  sub_data = training_progress[training_progress$id == i, ]
+  max_lev[i] = max(sub_data$max_level, na.rm = TRUE)
+}
+
+hist(max_lev)
+```
+
+
+Merging data in one data frame and saving it to .csv file:
+---------------------------------------------------------------
+
+```{r}
+
+progress <- data.frame(id, intercept_mean, slope_mean, intercept_max, slope_max, max_lev)
+write.csv(progress,  file = "training_progress.csv", row.names = FALSE)
+
+```
