@@ -190,7 +190,7 @@ Merging data in one data frame and saving it to .csv file:
 
 ```{r}
 
-progress <- data.frame(id, intercept_mean, slope_mean, intercept_max, slope_max, max_lev)
+progress <- data.frame(unique(id), intercept_mean, slope_mean, intercept_max, slope_max, max_lev)
 write.csv(progress,  file = "training_progress.csv", row.names = FALSE)
 
 ```
