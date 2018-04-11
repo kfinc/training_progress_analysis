@@ -69,6 +69,24 @@ ggplotly()
 
 ```
 
+Mean n-back level for each individual (on one plot):
+-----------------------------------------------
+
+```{r}
+# Scatter plot
+g <- ggplot(training_progress,
+              aes(x = session, y = mean_level))
+g <- g + geom_point() #(alpha = 0.5)
+#g <- g + geom_smooth(method = "lm")
+g <- g + theme_bw()
+g <- g + ggtitle("Mean n-back level for all subjects") 
+g <- g + xlab("Session") 
+g <- g + ylab("Mean n-back level") 
+g <- g + theme_bw()
+g <- g + geom_smooth(aes(col = id), method = "lm", se = FALSE)
+
+ggplotly()
+```
 
 Mean n-back level for each individual:
 -----------------------------------------------
@@ -191,6 +209,7 @@ Merging data in one data frame and saving it to .csv file:
 ```{r}
 
 progress <- data.frame(unique(id), intercept_mean, slope_mean, intercept_max, slope_max, max_lev)
+names(progress)[1] <- "ID"
 write.csv(progress,  file = "training_progress.csv", row.names = FALSE)
 
 ```
