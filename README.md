@@ -17,4 +17,4 @@ Script:
 
 Output: .html file with script and plots
 
-Required libraries: ggplot2, plotly
+Required libraries: tidyverse
